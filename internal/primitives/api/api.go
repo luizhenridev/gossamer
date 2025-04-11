@@ -68,7 +68,7 @@ type APIExt interface {
 
 // /// Something that provides a runtime api.
 // pub trait ProvideRuntimeApi<Block: BlockT> {
-type ProvideRuntimeAPI interface {
+type ProvideRuntimeAPI[API any] interface {
 	// 	/// The concrete type that provides the api.
 	// 	type Api: ApiExt<Block>;
 
@@ -78,5 +78,5 @@ type ProvideRuntimeAPI interface {
 	// /// the modifications will be `discarded`. The modifications will not be applied to the
 	// /// storage, even on a `commit`.
 	// fn runtime_api(&self) -> ApiRef<Self::Api>;
-	RuntimeAPI() APIExt
+	RuntimeAPI() API
 }
